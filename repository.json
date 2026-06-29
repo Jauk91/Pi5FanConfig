@@ -1,5 +1,5 @@
 {
-  "name": "HassOS Pi 5 Fan Enabler - High",
-  "url": "https://github.com/Jauk91/Pi5FanEnabler2",
+  "name": "HassOS Pi 5 Fan Controller",
+  "url": "https://github.com/Jauk91/Pi5FanController",
   "maintainer": "Jauk91"
 }
