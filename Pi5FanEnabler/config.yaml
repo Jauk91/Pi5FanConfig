@@ -16,13 +16,17 @@ full_access: true
 boot: "manual"
 options:
   mode: "tyst"
-  custom_temp0: 60
-  custom_speed0: 75
-  custom_temp1: 65
-  custom_speed1: 150
+  custom_t0: 60
+  custom_s0: 75
+  custom_t1: 65
+  custom_s1: 125
+  custom_t2: 70
+  custom_s2: 175
 schema:
-  mode: list(tyst|balanserad|aggressiv|avstängd|custom)
-  custom_temp0: int
-  custom_speed0: int
-  custom_temp1: int
-  custom_speed1: int
+  mode: list(tyst|balanserad|aggressiv|custom|avstängd)
+  custom_t0: int
+  custom_s0: int
+  custom_t1: int
+  custom_s1: int
+  custom_t2: int
+  custom_s2: int
