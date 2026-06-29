@@ -16,20 +16,29 @@ full_access: true
 boot: "manual"
 options:
   mode: "tyst"
+  # Steg 0
   custom_t0: 60
+  custom_h0: 5
   custom_s0: 75
+  # Steg 1
   custom_t1: 65
+  custom_h1: 5
   custom_s1: 125
+  # Steg 2
   custom_t2: 70
+  custom_h2: 5
   custom_s2: 175
 schema:
   mode: list(tyst|balanserad|aggressiv|custom|avstängd)
+  # Steg 0
   custom_t0: int
   custom_h0: int
   custom_s0: int
+  # Steg 1
   custom_t1: int
   custom_h1: int
   custom_s1: int
+  # Steg 2
   custom_t2: int
   custom_h2: int
   custom_s2: int
