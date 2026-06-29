@@ -1,7 +1,7 @@
-name: "Pi 5 Fan Enabler High"
-version: "0.82"
-slug: "pi5enableredit"
-description: "This enables the fan on the Raspberry Pi 5 when running Home Assistant OS. You can uninstall this when it has run once. Check logs for information."
+name: "Pi 5 Fan Controller"
+version: "0.9"
+slug: "pi5fancontroller"
+description: "This enables the fan on the Raspberry Pi 5 when running Home Assistant OS. You can control fan speeds, requires restart. Check logs for information."
 arch:
   - aarch64
 startup: "once"
@@ -13,23 +13,16 @@ privileged:
   - SYS_ADMIN
 stage: "stable"
 full_access: true
-url: "https://www.speaktothegeek.co.uk"
 boot: "manual"
-#options:
-#  fan_temp0: 35
-#  fan_temp0_speed: 75
-#  fan_temp1: 50
-#  fan_temp1_speed: 125
-#  fan_temp2: 60
-#  fan_temp3_speed: 175
-#  fan_temp4: 65
-#  fan_temp4_speed: 250
-#schema:
-#  fan_temp0: int
-#  fan_temp0_speed: int
-#  fan_temp1: int
-#  fan_temp1_speed: int
-#  fan_temp2: int
-#  fan_temp3_speed: int
-#  fan_temp4: int
-#  fan_temp4_speed: int
+options:
+  mode: "tyst"
+  custom_temp0: 60
+  custom_speed0: 75
+  custom_temp1: 65
+  custom_speed1: 150
+schema:
+  mode: list(tyst|balanserad|aggressiv|avstängd|custom)
+  custom_temp0: int
+  custom_speed0: int
+  custom_temp1: int
+  custom_speed1: int
