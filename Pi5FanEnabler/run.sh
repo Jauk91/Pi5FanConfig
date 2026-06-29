@@ -11,15 +11,12 @@ fan_config_lines=(
 "dtparam=fan_temp0=60000"
 "dtparam=fan_temp0_hyst=5000"
 "dtparam=fan_temp0_speed=75"
-
 "dtparam=fan_temp1=65000"
 "dtparam=fan_temp1_hyst=5000"
 "dtparam=fan_temp1_speed=125"
-
 "dtparam=fan_temp2=70000"
 "dtparam=fan_temp2_hyst=5000"
 "dtparam=fan_temp2_speed=175"
-
 "dtparam=fan_temp3=75000"
 "dtparam=fan_temp3_hyst=5000"
 "dtparam=fan_temp3_speed=250"
@@ -46,6 +43,8 @@ until false; do
     mount /dev/$partition /tmp/$partition 2>/dev/null
 
     if [ -e /tmp/$partition/config.txt ]; then
+      sed -i '/dtparam=fan_temp/d' /tmp/$partition/config.txt
+      
       for line in "${fan_config_lines[@]}"; do
         if ! grep -Fxq "$line" /tmp/$partition/config.txt; then
           echo "Adding '$line' to $partition/config.txt"
@@ -65,7 +64,7 @@ until false; do
   insertFanConfig mmcblk0p1
   insertFanConfig nvme0n1p1
 
-  # Find the fan device paths for use in sensors in HA:
+  # Find the fan device paths
   base="/sys/devices/platform/cooling_fan/hwmon"
   fan_path=""
   pwm_path=""
@@ -78,14 +77,6 @@ until false; do
       fi
   done
 
-  if [ -n "$fan_path" ]; then
-      echo "Use the following paths to create sensors in Home Assistant in accordance with the documentation:"
-      echo "$fan_path"
-      echo "$pwm_path"
-  else
-      echo "no fan device found"
-  fi
-  echo ""
   echo "Fan configuration complete. Perform a hard power-off reboot TWICE to activate."
   sleep 99999
 done
