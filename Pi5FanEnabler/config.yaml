@@ -25,8 +25,11 @@ options:
 schema:
   mode: list(tyst|balanserad|aggressiv|custom|avstängd)
   custom_t0: int
+  custom_h0: int
   custom_s0: int
   custom_t1: int
+  custom_h1: int
   custom_s1: int
   custom_t2: int
+  custom_h2: int
   custom_s2: int
